@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="wylse" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,10 +17,119 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8R-0v-l3C">
+                                <rect key="frame" x="16" y="192" width="568" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Fy6-PL-zs0"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="9PV-s1-Hle"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jcj-jY-cUB">
+                                <rect key="frame" x="300" y="20" width="300" height="30"/>
+                                <state key="normal" title="새메뉴">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchAddFood:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KzK-Dt-ySu"/>
+                                    <segue destination="WhN-K7-wha" kind="presentation" id="rf2-hQ-qH2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1n-FZ-NQS">
+                                <rect key="frame" x="0.0" y="562" width="600" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="66" id="2zO-ka-VEW"/>
+                                    <constraint firstAttribute="height" constant="100" id="LI0-bI-C6a"/>
+                                </constraints>
+                                <state key="normal" title="뭐먹지">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2zO-ka-VEW"/>
+                                        <exclude reference="LI0-bI-C6a"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="touchWylse:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WH9-D2-j8C"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XnW-rd-CJH">
+                                <rect key="frame" x="0.0" y="20" width="300" height="30"/>
+                                <state key="normal" title="태그선택">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchAddTag:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X6S-dl-U7B"/>
+                                    <segue destination="1ip-MV-XRf" kind="presentation" id="0Uh-93-Ymz"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XnW-rd-CJH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0fJ-wS-Z6e"/>
+                            <constraint firstAttribute="trailing" secondItem="H1n-FZ-NQS" secondAttribute="trailing" id="4d0-IK-tV3"/>
+                            <constraint firstItem="L8R-0v-l3C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ERc-za-6tc"/>
+                            <constraint firstAttribute="centerX" secondItem="L8R-0v-l3C" secondAttribute="centerX" id="GSG-Ml-ILp"/>
+                            <constraint firstItem="L8R-0v-l3C" firstAttribute="top" secondItem="H1n-FZ-NQS" secondAttribute="bottom" id="Gw1-oX-0lu"/>
+                            <constraint firstItem="Jcj-jY-cUB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="centerXWithinMargins" id="IXY-gh-KqS"/>
+                            <constraint firstItem="Jcj-jY-cUB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="MTv-tX-u0A"/>
+                            <constraint firstAttribute="centerY" secondItem="H1n-FZ-NQS" secondAttribute="centerY" constant="-277" id="XrB-P2-J9f"/>
+                            <constraint firstItem="XnW-rd-CJH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="a7j-Kg-nOj"/>
+                            <constraint firstAttribute="trailing" secondItem="Jcj-jY-cUB" secondAttribute="trailing" id="dCF-FC-P4l"/>
+                            <constraint firstAttribute="centerY" secondItem="L8R-0v-l3C" secondAttribute="centerY" id="kmN-KU-TQI"/>
+                            <constraint firstItem="L8R-0v-l3C" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="ktD-zd-5zJ"/>
+                            <constraint firstAttribute="centerXWithinMargins" secondItem="XnW-rd-CJH" secondAttribute="trailing" id="l17-gR-OVm"/>
+                            <constraint firstItem="H1n-FZ-NQS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pGr-FZ-eG2"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Gw1-oX-0lu"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="addFoodButton" destination="Jcj-jY-cUB" id="yaU-6C-BDz"/>
+                        <outlet property="menuPickerView" destination="L8R-0v-l3C" id="5bp-BD-qvD"/>
+                        <outlet property="tagSelectButton" destination="XnW-rd-CJH" id="8N9-BA-ADu"/>
+                        <outlet property="wylseButton" destination="H1n-FZ-NQS" id="MHj-3u-Za4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Food View Controller-->
+        <scene sceneID="Y8P-5B-ci3">
+            <objects>
+                <viewController id="WhN-K7-wha" customClass="FoodViewController" customModule="wylse" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kis-uE-Q3Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="hXP-RX-wOa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RVX-Fo-vcv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yZV-Jq-6SA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Tag View Controller-->
+        <scene sceneID="ssG-fk-VvR">
+            <objects>
+                <viewController id="1ip-MV-XRf" customClass="TagViewController" customModule="wylse" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JET-FQ-S5J"/>
+                        <viewControllerLayoutGuide type="bottom" id="WAa-TY-sso"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="il7-4K-EzG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SRu-33-dCx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
