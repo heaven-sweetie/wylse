@@ -41,6 +41,18 @@ class ViewController: UIViewController {
         var randomValue:Int = random()%foodList.count
         menuPickerView.selectRow(randomValue, inComponent: 0, animated: true)
     }
+    
+    @IBAction func touchFoodAdd(segue:UIStoryboardSegue) {
+        let addFood = segue.sourceViewController as! FoodViewController
+        
+        foodList.append(addFood.addFoodName.text)
+        dismissViewControllerAnimated(false, completion: nil)
+    }
+    
+    @IBAction func touchBackButton(segue:UIStoryboardSegue) {
+        dismissViewControllerAnimated(false, completion: nil)        
+    }
+
 }
 
 extension ViewController: UIPickerViewDataSource {
