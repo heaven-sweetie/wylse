@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15C268D21AC1C92100DE8D24 /* WylseModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57FCBA481ABD7F3E00881EB8 /* WylseModel.xcdatamodeld */; };
+		15C268D31AC1CA4500DE8D24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57CEA9FC1ABD61EF00CBA285 /* Main.storyboard */; };
+		15C268D41AC1CA4500DE8D24 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CEAA011ABD61EF00CBA285 /* LaunchScreen.xib */; };
+		15F6C9491AC137940061712A /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6C9481AC137940061712A /* DataHelper.swift */; };
 		57CEA9F91ABD61EF00CBA285 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEA9F81ABD61EF00CBA285 /* AppDelegate.swift */; };
 		57CEA9FB1ABD61EF00CBA285 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEA9FA1ABD61EF00CBA285 /* ViewController.swift */; };
-		57CEA9FE1ABD61EF00CBA285 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57CEA9FC1ABD61EF00CBA285 /* Main.storyboard */; };
 		57CEAA001ABD61EF00CBA285 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57CEA9FF1ABD61EF00CBA285 /* Images.xcassets */; };
-		57CEAA031ABD61EF00CBA285 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CEAA011ABD61EF00CBA285 /* LaunchScreen.xib */; };
 		57CEAA0F1ABD61EF00CBA285 /* wylseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEAA0E1ABD61EF00CBA285 /* wylseTests.swift */; };
 		57FCBA451ABD7D9100881EB8 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FCBA441ABD7D9100881EB8 /* Food.swift */; };
 		57FCBA471ABD7D9A00881EB8 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FCBA461ABD7D9A00881EB8 /* Tag.swift */; };
-		57FCBA4A1ABD7F3E00881EB8 /* WylseModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57FCBA481ABD7F3E00881EB8 /* WylseModel.xcdatamodeld */; };
 		57FCBA521ABD894B00881EB8 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FCBA511ABD894B00881EB8 /* FoodViewController.swift */; };
 		57FCBA541ABD8BD800881EB8 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FCBA531ABD8BD800881EB8 /* TagViewController.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15D8CBC61AC1B4BA00773715 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		15F6C9481AC137940061712A /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		57CEA9F31ABD61EF00CBA285 /* wylse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wylse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CEA9F71ABD61EF00CBA285 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57CEA9F81ABD61EF00CBA285 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +72,7 @@
 		57CEA9EA1ABD61EF00CBA285 = {
 			isa = PBXGroup;
 			children = (
+				15D8CBC61AC1B4BA00773715 /* CoreData.framework */,
 				57CEA9F51ABD61EF00CBA285 /* wylse */,
 				57CEAA0B1ABD61EF00CBA285 /* wylseTests */,
 				57CEA9F41ABD61EF00CBA285 /* Products */,
@@ -137,6 +141,7 @@
 		57CEAA191ABD7CE800CBA285 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				15F6C9481AC137940061712A /* DataHelper.swift */,
 				57CEA9FA1ABD61EF00CBA285 /* ViewController.swift */,
 				57FCBA511ABD894B00881EB8 /* FoodViewController.swift */,
 				57FCBA531ABD8BD800881EB8 /* TagViewController.swift */,
@@ -231,8 +236,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57CEA9FE1ABD61EF00CBA285 /* Main.storyboard in Resources */,
-				57CEAA031ABD61EF00CBA285 /* LaunchScreen.xib in Resources */,
+				15C268D31AC1CA4500DE8D24 /* Main.storyboard in Resources */,
+				15C268D41AC1CA4500DE8D24 /* LaunchScreen.xib in Resources */,
 				57CEAA001ABD61EF00CBA285 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,11 +256,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15C268D21AC1C92100DE8D24 /* WylseModel.xcdatamodeld in Sources */,
 				57FCBA471ABD7D9A00881EB8 /* Tag.swift in Sources */,
 				57CEA9FB1ABD61EF00CBA285 /* ViewController.swift in Sources */,
 				57CEA9F91ABD61EF00CBA285 /* AppDelegate.swift in Sources */,
-				57FCBA4A1ABD7F3E00881EB8 /* WylseModel.xcdatamodeld in Sources */,
 				57FCBA521ABD894B00881EB8 /* FoodViewController.swift in Sources */,
+				15F6C9491AC137940061712A /* DataHelper.swift in Sources */,
 				57FCBA451ABD7D9100881EB8 /* Food.swift in Sources */,
 				57FCBA541ABD8BD800881EB8 /* TagViewController.swift in Sources */,
 			);
@@ -388,6 +394,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = wylse/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -400,6 +407,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = wylse/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -25,6 +25,7 @@ class FoodViewController : UIViewController {
             foodName = addFoodName.text
         }
     }
+    
 //    @IBAction func touchFoodAdd(sender: UIButton) {
 //        foodName = addFoodName.text
 //        self.dismissViewControllerAnimated(false, completion: nil)

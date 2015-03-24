@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var menuPickerView: UIPickerView!
     @IBOutlet weak var wylseButton: UIButton!
     
-    var foodList = ["불백", "김치찌개", "인도네시아커피", "따뜻한 레몬티", "복분자 에이드"]
+    var foodList: [String]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,9 @@ class ViewController: UIViewController {
         
         // TODO: Fetch Food List
         // TODO: menuPickerView.reloadAllComponents()
+        
+        // 음식 리스트 로드.
+        loadFood()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,12 +48,31 @@ class ViewController: UIViewController {
     @IBAction func touchFoodAdd(segue:UIStoryboardSegue) {
         let addFood = segue.sourceViewController as! FoodViewController
         
-        foodList.append(addFood.addFoodName.text)
+        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.dataHelper.addFoods(addFood.addFoodName.text, tags: [], complete: {
+
+            self.loadFood()
+        })
+        
         dismissViewControllerAnimated(false, completion: nil)
     }
     
     @IBAction func touchBackButton(segue:UIStoryboardSegue) {
         dismissViewControllerAnimated(false, completion: nil)        
+    }
+    
+    func loadFood() {
+        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        foodList.removeAll(keepCapacity: false)
+        
+        if let foods = appDelegate.dataHelper?.fetchAllFoods() {
+            for food in foods {
+                foodList.append(food.name)
+            }
+        }
+        
+        menuPickerView.reloadAllComponents()
     }
 
 }
