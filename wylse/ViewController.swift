@@ -58,7 +58,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchBackButton(segue:UIStoryboardSegue) {
-        dismissViewControllerAnimated(false, completion: nil)        
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func loadFood() {
