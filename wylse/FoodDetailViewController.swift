@@ -61,9 +61,10 @@ extension FoodDetailViewController: UITableViewDataSource {
             let tag = tagList[indexPath.row] as Tag! {
                 foodTagCell.textLabel?.text = tag.name
                 
-                if let tags = food.tags as [Tag]!,
-                    let selectedTag = tags.filter({ $0 == tag }).first as Tag! {
+                if let tags = food.tags as [Tag]! where (find(tags, tag) != nil)  {
                     foodTagCell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                } else {
+                    foodTagCell.accessoryType = UITableViewCellAccessoryType.None
                 }
                 
                 return foodTagCell
@@ -79,11 +80,18 @@ extension FoodDetailViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let tag = tagList[indexPath.row] as Tag! {
             if let selectedTagList = food.tags as [Tag]! {
-                food.tags!.append(tag)
+                if let index = find(selectedTagList, tag) {
+                    food.tags!.removeAtIndex(index)
+                } else {
+                    food.tags!.append(tag)
+                }
             } else {
                 food.tags = [tag]
             }
+            
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
 }
