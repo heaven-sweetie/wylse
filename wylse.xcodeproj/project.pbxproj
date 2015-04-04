@@ -7,18 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15C268D21AC1C92100DE8D24 /* WylseModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57FCBA481ABD7F3E00881EB8 /* WylseModel.xcdatamodeld */; };
 		15C268D31AC1CA4500DE8D24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57CEA9FC1ABD61EF00CBA285 /* Main.storyboard */; };
 		15C268D41AC1CA4500DE8D24 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CEAA011ABD61EF00CBA285 /* LaunchScreen.xib */; };
-		15F6C9491AC137940061712A /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F6C9481AC137940061712A /* DataHelper.swift */; };
 		57CEA9F91ABD61EF00CBA285 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEA9F81ABD61EF00CBA285 /* AppDelegate.swift */; };
-		57CEA9FB1ABD61EF00CBA285 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEA9FA1ABD61EF00CBA285 /* ViewController.swift */; };
+		57CEA9FB1ABD61EF00CBA285 /* FoodListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEA9FA1ABD61EF00CBA285 /* FoodListViewController.swift */; };
 		57CEAA001ABD61EF00CBA285 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57CEA9FF1ABD61EF00CBA285 /* Images.xcassets */; };
 		57CEAA0F1ABD61EF00CBA285 /* wylseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEAA0E1ABD61EF00CBA285 /* wylseTests.swift */; };
 		57FCBA451ABD7D9100881EB8 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FCBA441ABD7D9100881EB8 /* Food.swift */; };
 		57FCBA471ABD7D9A00881EB8 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FCBA461ABD7D9A00881EB8 /* Tag.swift */; };
-		57FCBA521ABD894B00881EB8 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FCBA511ABD894B00881EB8 /* FoodViewController.swift */; };
-		57FCBA541ABD8BD800881EB8 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FCBA531ABD8BD800881EB8 /* TagViewController.swift */; };
+		57FCBA541ABD8BD800881EB8 /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FCBA531ABD8BD800881EB8 /* FoodDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,12 +29,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		15D8CBC61AC1B4BA00773715 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		15F6C9481AC137940061712A /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		57CEA9F31ABD61EF00CBA285 /* wylse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wylse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CEA9F71ABD61EF00CBA285 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57CEA9F81ABD61EF00CBA285 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		57CEA9FA1ABD61EF00CBA285 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		57CEA9FA1ABD61EF00CBA285 /* FoodListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListViewController.swift; sourceTree = "<group>"; };
 		57CEA9FD1ABD61EF00CBA285 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		57CEA9FF1ABD61EF00CBA285 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		57CEAA021ABD61EF00CBA285 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -46,9 +41,7 @@
 		57CEAA0E1ABD61EF00CBA285 /* wylseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wylseTests.swift; sourceTree = "<group>"; };
 		57FCBA441ABD7D9100881EB8 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		57FCBA461ABD7D9A00881EB8 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
-		57FCBA491ABD7F3E00881EB8 /* WylseModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WylseModel.xcdatamodel; sourceTree = "<group>"; };
-		57FCBA511ABD894B00881EB8 /* FoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
-		57FCBA531ABD8BD800881EB8 /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
+		57FCBA531ABD8BD800881EB8 /* FoodDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +65,6 @@
 		57CEA9EA1ABD61EF00CBA285 = {
 			isa = PBXGroup;
 			children = (
-				15D8CBC61AC1B4BA00773715 /* CoreData.framework */,
 				57CEA9F51ABD61EF00CBA285 /* wylse */,
 				57CEAA0B1ABD61EF00CBA285 /* wylseTests */,
 				57CEA9F41ABD61EF00CBA285 /* Products */,
@@ -131,7 +123,6 @@
 		57CEAA181ABD7CD000CBA285 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				57FCBA481ABD7F3E00881EB8 /* WylseModel.xcdatamodeld */,
 				57FCBA441ABD7D9100881EB8 /* Food.swift */,
 				57FCBA461ABD7D9A00881EB8 /* Tag.swift */,
 			);
@@ -141,10 +132,8 @@
 		57CEAA191ABD7CE800CBA285 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				15F6C9481AC137940061712A /* DataHelper.swift */,
-				57CEA9FA1ABD61EF00CBA285 /* ViewController.swift */,
-				57FCBA511ABD894B00881EB8 /* FoodViewController.swift */,
-				57FCBA531ABD8BD800881EB8 /* TagViewController.swift */,
+				57CEA9FA1ABD61EF00CBA285 /* FoodListViewController.swift */,
+				57FCBA531ABD8BD800881EB8 /* FoodDetailViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -256,14 +245,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15C268D21AC1C92100DE8D24 /* WylseModel.xcdatamodeld in Sources */,
 				57FCBA471ABD7D9A00881EB8 /* Tag.swift in Sources */,
-				57CEA9FB1ABD61EF00CBA285 /* ViewController.swift in Sources */,
+				57CEA9FB1ABD61EF00CBA285 /* FoodListViewController.swift in Sources */,
 				57CEA9F91ABD61EF00CBA285 /* AppDelegate.swift in Sources */,
-				57FCBA521ABD894B00881EB8 /* FoodViewController.swift in Sources */,
-				15F6C9491AC137940061712A /* DataHelper.swift in Sources */,
 				57FCBA451ABD7D9100881EB8 /* Food.swift in Sources */,
-				57FCBA541ABD8BD800881EB8 /* TagViewController.swift in Sources */,
+				57FCBA541ABD8BD800881EB8 /* FoodDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,19 +464,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		57FCBA481ABD7F3E00881EB8 /* WylseModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				57FCBA491ABD7F3E00881EB8 /* WylseModel.xcdatamodel */,
-			);
-			currentVersion = 57FCBA491ABD7F3E00881EB8 /* WylseModel.xcdatamodel */;
-			path = WylseModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 57CEA9EB1ABD61EF00CBA285 /* Project object */;
 }
