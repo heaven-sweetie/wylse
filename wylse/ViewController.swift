@@ -10,90 +10,56 @@ import UIKit
 
 class ViewController: UIViewController {
     
-//    TODO: Picker Delegate, DataSource는 storyboard에서 연결
-
-    @IBOutlet weak var tagSelectButton: UIButton!
-    @IBOutlet weak var addFoodButton: UIButton!
-    @IBOutlet weak var menuPickerView: UIPickerView!
-    @IBOutlet weak var wylseButton: UIButton!
+    @IBOutlet weak var foodListTableView: UITableView!
     
-    var foodList: [String]! = []
+    var foodList = [Food]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        // TODO: Fetch Food List
-        // TODO: menuPickerView.reloadAllComponents()
-        
-        // 음식 리스트 로드.
-        loadFood()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    @IBAction func touchAddFood(sender: UIButton) {
     }
     
-    @IBAction func touchAddTag(sender: UIButton) {
-    }
-    @IBAction func touchWylse(sender: UIButton) {
-        var randomValue:Int = random()%foodList.count
-        menuPickerView.selectRow(randomValue, inComponent: 0, animated: true)
-    }
-    
-    @IBAction func touchFoodAdd(segue:UIStoryboardSegue) {
-        let addFood = segue.sourceViewController as! FoodViewController
-        
-        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.dataHelper.addFoods(addFood.addFoodName.text, tags: [], complete: {
-
-            self.loadFood()
-        })
-        
-        dismissViewControllerAnimated(false, completion: nil)
-    }
-    
-    @IBAction func touchBackButton(segue:UIStoryboardSegue) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func loadFood() {
-        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        foodList.removeAll(keepCapacity: false)
-        
-        if let foods = appDelegate.dataHelper?.fetchAllFoods() {
-            for food in foods {
-                foodList.append(food.name)
-            }
+    //MARK: - Action
+    @IBAction func newFoodButtonTouched(sender: UIButton) {
+        let alertController = UIAlertController(title: "New Food",
+            message: "Input food name", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addTextFieldWithConfigurationHandler { (textField:UITextField!) -> Void in
+            textField.returnKeyType = UIReturnKeyType.Done
         }
-        
-        menuPickerView.reloadAllComponents()
+        alertController.addAction(UIAlertAction(title: "Cancel",
+            style: UIAlertActionStyle.Cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Add new food",
+            style: UIAlertActionStyle.Default, handler: { (alertAction) -> Void in
+                if let textField:UITextField = alertController.textFields?.first as? UITextField,
+                    let foodName = textField.text {
+                        let food:Food = Food(name: foodName, tags: nil)
+                        self.foodList.append(food)
+                        self.foodListTableView.reloadData()
+                }
+        }))
+        presentViewController(alertController, animated: true, completion: nil)
     }
-
 }
 
-extension ViewController: UIPickerViewDataSource {
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
+let kFoodCell = "FoodCell"
+
+extension ViewController: UITableViewDataSource {
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return foodList.count
     }
-}
-
-extension ViewController: UIPickerViewDelegate {
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        if let foodName = foodList[row] as String! {
-            return foodName
-        }else {
-                return ""
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if let foodCell = tableView.dequeueReusableCellWithIdentifier(kFoodCell) as? UITableViewCell,
+            let food = foodList[indexPath.row] as Food! {
+                foodCell.textLabel?.text = food.name
+            return foodCell
+        } else {
+            return UITableViewCell()
         }
-        
     }
+    
 }
