@@ -7,9 +7,23 @@
 //
 
 import Foundation
-import CoreData
 
-class Tag : NSManagedObject {
-    @NSManaged var name: String
-    @NSManaged var food: Food
+class Tag : NSObject {
+    let name: String
+    
+    init(name: String) {
+        self.name = name
+        
+        super.init()
+    }
+    
+    override func isEqual(object: AnyObject?) -> Bool {
+        if let comparedObject = object as? Tag {
+            return comparedObject.name == self.name
+        } else {
+            return false
+        }
+    }
 }
+
+var tagList = [Tag]()

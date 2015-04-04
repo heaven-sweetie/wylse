@@ -7,10 +7,16 @@
 //
 
 import Foundation
-import CoreData
 
-class Food : NSManagedObject {
-    @NSManaged var name: String
-    @NSManaged var tag: Tag
+class Food : NSObject {
     
+    let name: String
+    var tags: [Tag]?
+    
+    init(name: String, tags:[Tag]?) {
+        self.name = name
+        self.tags = tags
+        
+        super.init()
+    }
 }
