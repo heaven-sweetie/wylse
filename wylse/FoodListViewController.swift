@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+let kFoodDetailSegueIdentifier = "foodDetailSegue"
+
+class FoodListViewController: UIViewController {
     
     @IBOutlet weak var foodListTableView: UITableView!
     
@@ -35,18 +37,39 @@ class ViewController: UIViewController {
             style: UIAlertActionStyle.Default, handler: { (alertAction) -> Void in
                 if let textField:UITextField = alertController.textFields?.first as? UITextField,
                     let foodName = textField.text {
-                        let food:Food = Food(name: foodName, tags: nil)
+                        let food:Food = Food(name: foodName, tags: [Tag(name: "Tag")])
                         self.foodList.append(food)
                         self.foodListTableView.reloadData()
                 }
         }))
         presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    //MARK: - Segue
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if let segueIdentifier = identifier as String! where segueIdentifier == kFoodDetailSegueIdentifier,
+            let selectedIndexPath = foodListTableView.indexPathForSelectedRow() as NSIndexPath!,
+            let food = foodList[selectedIndexPath.row] as Food!,
+            let tags = food.tags where tags.count > 0 {
+                return true
+        } else {
+            return false
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let segueIdentifier = segue.identifier as String! where segueIdentifier == kFoodDetailSegueIdentifier,
+            let selectedIndexPath = foodListTableView.indexPathForSelectedRow() as NSIndexPath!,
+            let food = foodList[selectedIndexPath.row] as Food! {
+                let destination: FoodDetailViewController = segue.destinationViewController as! FoodDetailViewController
+                destination.food = food
+        }
+    }
 }
 
 let kFoodCell = "FoodCell"
 
-extension ViewController: UITableViewDataSource {
+extension FoodListViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return foodList.count
@@ -56,7 +79,10 @@ extension ViewController: UITableViewDataSource {
         if let foodCell = tableView.dequeueReusableCellWithIdentifier(kFoodCell) as? UITableViewCell,
             let food = foodList[indexPath.row] as Food! {
                 foodCell.textLabel?.text = food.name
-            return foodCell
+                if food.tags?.count > 0 {
+                    foodCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                }
+                return foodCell
         } else {
             return UITableViewCell()
         }
