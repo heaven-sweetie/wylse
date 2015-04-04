@@ -114,10 +114,21 @@
                                     <outlet property="delegate" destination="d1z-KJ-sqI" id="n6a-Rr-j8l"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DxK-tb-WE0">
+                                <rect key="frame" x="520" y="562" width="60" height="30"/>
+                                <state key="normal" title="New Tag">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="newTagButtonTouched:" destination="d1z-KJ-sqI" eventType="touchUpInside" id="3CW-Cg-PpK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lqN-bl-S4i" firstAttribute="leading" secondItem="H8r-eZ-90P" secondAttribute="leading" id="A8k-Rp-Taz"/>
+                            <constraint firstAttribute="trailing" secondItem="DxK-tb-WE0" secondAttribute="trailing" constant="20" symbolic="YES" id="OIw-dB-8oi"/>
+                            <constraint firstItem="f7t-v2-nKW" firstAttribute="top" secondItem="DxK-tb-WE0" secondAttribute="bottom" constant="8" symbolic="YES" id="OwF-gD-hbs"/>
                             <constraint firstAttribute="trailing" secondItem="lqN-bl-S4i" secondAttribute="trailing" id="etq-VU-Mbx"/>
                             <constraint firstItem="lqN-bl-S4i" firstAttribute="top" secondItem="H8r-eZ-90P" secondAttribute="top" id="f99-Wp-q4m"/>
                             <constraint firstItem="f7t-v2-nKW" firstAttribute="top" secondItem="lqN-bl-S4i" secondAttribute="bottom" id="hht-sv-c72"/>
