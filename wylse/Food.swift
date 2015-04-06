@@ -19,4 +19,5 @@ class Food : NSObject {
         
         super.init()
     }
+    
 }

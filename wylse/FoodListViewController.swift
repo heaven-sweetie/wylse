@@ -27,7 +27,8 @@ class FoodListViewController: UIViewController {
     //MARK: - Action
     @IBAction func newFoodButtonTouched(sender: UIButton) {
         let alertController = UIAlertController(title: "New Food",
-            message: "Input food name", preferredStyle: UIAlertControllerStyle.Alert)
+            message: "Input food name",
+            preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addTextFieldWithConfigurationHandler { (textField:UITextField!) -> Void in
             textField.returnKeyType = UIReturnKeyType.Done
         }
@@ -37,26 +38,23 @@ class FoodListViewController: UIViewController {
             style: UIAlertActionStyle.Default, handler: { (alertAction) -> Void in
                 if let textField:UITextField = alertController.textFields?.first as? UITextField,
                     let foodName = textField.text {
-                        let food:Food = Food(name: foodName, tags: [Tag(name: "Tag")])
+                        let food:Food = Food(name: foodName, tags: nil)
                         self.foodList.append(food)
                         self.foodListTableView.reloadData()
+                        
+                        self.foodListTableView.selectRowAtIndexPath(NSIndexPath(forRow: (self.foodList.count - 1), inSection: 0),
+                            animated: true,
+                            scrollPosition: UITableViewScrollPosition.None)
+                        self.performSegueWithIdentifier(kFoodDetailSegueIdentifier, sender: self)
+                        self.foodListTableView.deselectRowAtIndexPath(NSIndexPath(forRow: (self.foodList.count - 1), inSection: 0),
+                            animated: true)
                 }
         }))
+        
         presentViewController(alertController, animated: true, completion: nil)
     }
     
     //MARK: - Segue
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        if let segueIdentifier = identifier as String! where segueIdentifier == kFoodDetailSegueIdentifier,
-            let selectedIndexPath = foodListTableView.indexPathForSelectedRow() as NSIndexPath!,
-            let food = foodList[selectedIndexPath.row] as Food!,
-            let tags = food.tags where tags.count > 0 {
-                return true
-        } else {
-            return false
-        }
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let segueIdentifier = segue.identifier as String! where segueIdentifier == kFoodDetailSegueIdentifier,
             let selectedIndexPath = foodListTableView.indexPathForSelectedRow() as NSIndexPath!,
@@ -65,6 +63,7 @@ class FoodListViewController: UIViewController {
                 destination.food = food
         }
     }
+    
 }
 
 let kFoodCell = "FoodCell"
@@ -79,13 +78,19 @@ extension FoodListViewController: UITableViewDataSource {
         if let foodCell = tableView.dequeueReusableCellWithIdentifier(kFoodCell) as? UITableViewCell,
             let food = foodList[indexPath.row] as Food! {
                 foodCell.textLabel?.text = food.name
-                if food.tags?.count > 0 {
-                    foodCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-                }
+                foodCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                 return foodCell
         } else {
             return UITableViewCell()
         }
+    }
+    
+}
+
+extension FoodListViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
 }
