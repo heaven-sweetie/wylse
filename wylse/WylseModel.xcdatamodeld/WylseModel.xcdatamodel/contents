@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7535.1" systemVersion="14C1514" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D131" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Food" representedClassName="wylse.Food" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="tag" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="food" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="foods" inverseEntity="Tag" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName="wylse.Tag" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="food" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Food" inverseName="tag" inverseEntity="Food" syncable="YES"/>
+        <relationship name="foods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="tags" inverseEntity="Food" syncable="YES"/>
     </entity>
     <elements>
         <element name="Food" positionX="-63" positionY="-18" width="128" height="75"/>
