@@ -13,11 +13,14 @@ class FoodViewController : UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var foodAddButton: UIButton!
     @IBOutlet weak var addFoodName: UITextField!
-    
+    @IBOutlet weak var addTag: UIButton!
+    @IBOutlet weak var tagTableView: UITableView!
+
+    var selectedTags = NSMutableArray()
     var foodName:String!
     
     override func viewDidLoad() {
-        
+        self.tagTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -25,22 +28,41 @@ class FoodViewController : UIViewController {
             foodName = addFoodName.text
         }
     }
+    @IBAction func touchTagSelect(sender: UIButton) {
+    }
     
-//    @IBAction func touchFoodAdd(sender: UIButton) {
-//        foodName = addFoodName.text
-//        self.dismissViewControllerAnimated(false, completion: nil)
-//    }
-//    
-//    @IBAction func touchBack(sender: UIButton) {
-//        self.dismissViewControllerAnimated(false, completion: nil)
-//    }
-//    
-//    
-//    @IBAction func touchFoodAdd(segue:UIStoryboardSegue) {
-//        let addFoodViewController = segue.
-//    }
-//    
-//    @IBAction func touchBackButton(segue:UIStoryboardSegue) {
-//        
-//    }
+    @IBAction func touchBackButton(segue:UIStoryboardSegue) {
+        if let tagViewController = segue.sourceViewController as? TagViewController {
+            selectedTags = tagViewController.selectedTags
+            for selectItem in tagViewController.selectedTags {
+                let tagName = tagList[selectItem.row] as TagTemp
+                println(tagName.name)
+            }
+            self.tagTableView.reloadData()
+
+        }
+    }
+}
+
+//MARK: UITableViewDataSource
+extension FoodViewController:UITableViewDataSource {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return selectedTags.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if let cell:UITableViewCell = self.tagTableView.dequeueReusableCellWithIdentifier("cell") as? UITableViewCell ,
+            let tagName = tagList[selectedTags.objectAtIndex(indexPath.row).row] as TagTemp! {
+            cell.textLabel?.text = tagName.name
+            println("cell make")
+            return cell
+
+        } else {
+            return UITableViewCell()
+        }
+    }
+}
+
+extension FoodViewController:UITableViewDelegate {
+    
 }
