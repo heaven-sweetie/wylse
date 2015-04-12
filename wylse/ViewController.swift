@@ -58,6 +58,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchBackButton(segue:UIStoryboardSegue) {
+        if let tagViewController = segue.sourceViewController as? TagViewController {
+            println("Tag!")
+        } else if let foodViewController = segue.sourceViewController as? FoodViewController {
+            println("Food!")
+        }
         dismissViewControllerAnimated(true, completion: nil)
     }
     
