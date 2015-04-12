@@ -74,9 +74,6 @@ class TagViewController: UIViewController {
         }
         return result
     }
-    
-    // TODO: 다중선택
-    
 }
 
 // MARK: - TableView Data source
