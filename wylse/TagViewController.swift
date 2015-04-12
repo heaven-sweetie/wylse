@@ -11,9 +11,20 @@ import UIKit
 class TagViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    var refreshControl: UIRefreshControl!
+    var selectedTags = NSMutableArray()
     
     override func viewDidLoad() {
-        // TODO: TableView 표시
+        // 땡겨서 새로고침 UIRefreshControl 추가
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "땡겨서 태그해제")
+        refreshControl.addTarget(self, action: "reloadTags:", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
+    }
+    
+    // 선택된 태그 모두 해제 (Pull to Refresh) 떙겨서 태그해제
+    func reloadTags(sender: AnyObject) {
+        refreshControl.endRefreshing()
     }
     
     //MARK: - Action
@@ -27,18 +38,25 @@ class TagViewController: UIViewController {
             if let textField = alertController.textFields?.first as? UITextField,
 
                 let text = textField.text {
-                
-                if self.compareTag(tagList, findText: text) {
-                    let duplicateAlert = UIAlertController(title: "에러", message: "중복된 태그가 있습니다.", preferredStyle: UIAlertControllerStyle.Alert)
-                    let action = UIAlertAction(title: "확인", style: UIAlertActionStyle.Cancel, handler: nil)
-                    duplicateAlert.addAction(action)
+                    if text.isEmpty {
+                        let emptyAlert = UIAlertController(title: "에러", message: "태그를 입력해주세요.", preferredStyle: UIAlertControllerStyle.Alert)
+                        let action = UIAlertAction(title: "확인", style: UIAlertActionStyle.Cancel, handler: nil)
+                        emptyAlert.addAction(action)
+                        
+                        self.presentViewController(emptyAlert, animated: true, completion: nil)
+                    }
                     
-                    self.presentViewController(duplicateAlert, animated: true, completion: nil)
-                }
-                else {
-                    tagList.append(TagTemp(name: text))
-                    self.tableView.reloadData()
-                }
+                    if self.compareTag(tagList, findText: text) {
+                        let duplicateAlert = UIAlertController(title: "에러", message: "중복된 태그가 있습니다.", preferredStyle: UIAlertControllerStyle.Alert)
+                        let action = UIAlertAction(title: "확인", style: UIAlertActionStyle.Cancel, handler: nil)
+                        duplicateAlert.addAction(action)
+                        
+                        self.presentViewController(duplicateAlert, animated: true, completion: nil)
+                    }
+                    else {
+                        tagList.append(TagTemp(name: text))
+                        self.tableView.reloadData()
+                    }
                     
             }
         }))
@@ -57,7 +75,6 @@ class TagViewController: UIViewController {
         return result
     }
     
-    // TODO: 선택된 태그 모두 해제 (Pull to Refresh) 떙겨서 태그해제
     // TODO: 다중선택
     
 }
@@ -74,10 +91,32 @@ extension TagViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCellWithIdentifier(kTagCellIdentifier) as? UITableViewCell,
             let cellText = tagList[indexPath.row] as TagTemp! {
             cell.textLabel!.text = cellText.name
+                
+            if selectedTags.containsObject(indexPath) {
+                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            }
+            else {
+                cell.accessoryType = UITableViewCellAccessoryType.None
+            }
             return cell
         } else {
             return UITableViewCell()
         }
         
+    }
+}
+
+extension TagViewController: UITableViewDelegate {
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if selectedTags.containsObject(indexPath) {
+            selectedTags.removeObject(indexPath)
+        }
+        else {
+            selectedTags.addObject(indexPath)
+        }
+        
+        tableView.reloadData()
     }
 }
