@@ -25,5 +25,3 @@ class TagTemp : NSObject {
         }
     }
 }
-
-var tagList = [TagTemp]()

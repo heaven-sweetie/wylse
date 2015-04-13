@@ -13,5 +13,4 @@ class Tag: NSManagedObject {
 
     @NSManaged var name: String
     @NSManaged var foods: NSSet
-
 }

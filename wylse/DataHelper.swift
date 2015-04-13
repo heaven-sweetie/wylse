@@ -36,6 +36,26 @@ public class DataHelper {
         complete()
     }
     
+    // 태그를 추가한다.
+    func addTags(tagName: String, complete: ()->()) {
+        let tagEntity = NSEntityDescription.entityForName("Tag", inManagedObjectContext: context)
+        var newTag = Tag(entity: tagEntity!, insertIntoManagedObjectContext: context)
+        newTag.name = tagName
+        
+        context.save(nil)
+        
+        complete()
+    }
+    
+    func fetchAllTags() -> [Tag] {
+        let tagFetchRequest = NSFetchRequest()
+        tagFetchRequest.entity = NSEntityDescription.entityForName("Tag", inManagedObjectContext: context)
+
+        let allTags = context.executeFetchRequest(tagFetchRequest, error: nil) as! [Tag]
+        
+        return allTags
+    }
+    
     // TODO: 음식정보를 수정한다. (태그도 수정?)
     func modifyFood(foodName: String, complete: ()->()) {
         
