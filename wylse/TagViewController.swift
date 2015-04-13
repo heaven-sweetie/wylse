@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class TagViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var refreshControl: UIRefreshControl!
     var selectedTags = NSMutableArray()
-    var tagList: [Tag]!
+    var tagList: [Tag]! = []
     
     override func viewDidLoad() {
         // 땡겨서 새로고침 UIRefreshControl 추가
@@ -70,17 +71,21 @@ class TagViewController: UIViewController {
                             self.presentViewController(duplicateAlert, animated: true, completion: nil)
                         }
                         else {
-                            var tag = Tag()
-                            tag.name = text
-                            self.tagList.append(tag)
+                            var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                            let tagEntity = NSEntityDescription.entityForName("Tag", inManagedObjectContext: appDelegate.dataHelper.context)
+                            var newTag = Tag(entity: tagEntity!, insertIntoManagedObjectContext: appDelegate.dataHelper.context)
+                            
+                            newTag.name = text
+                            
+                            self.tagList.append(newTag)
                             // 새로 넣는 태그를 선택한 아이템으로 추가.
                             var indexPath = NSIndexPath(forItem: self.tagList.count-1, inSection: 0)
-                            
-                            var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
+                            /*
                             appDelegate.dataHelper.addTags(text, complete: {
                                 self.loadTag()
                             })
-                            
+                            */
                             
                             self.selectedTags.addObject(indexPath)
                             self.tableView.reloadData()

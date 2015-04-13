@@ -42,6 +42,7 @@ public class DataHelper {
         var newTag = Tag(entity: tagEntity!, insertIntoManagedObjectContext: context)
         newTag.name = tagName
         
+        
         context.save(nil)
         
         complete()
