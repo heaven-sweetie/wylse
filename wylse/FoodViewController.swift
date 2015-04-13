@@ -18,6 +18,7 @@ class FoodViewController : UIViewController {
 
     var selectedTags = NSMutableArray()
     var foodName:String!
+    var tags:[String]! = []
     
     override func viewDidLoad() {
         self.tagTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -30,16 +31,15 @@ class FoodViewController : UIViewController {
     }
     @IBAction func touchTagSelect(sender: UIButton) {
     }
-    
+
     @IBAction func touchBackButton(segue:UIStoryboardSegue) {
         if let tagViewController = segue.sourceViewController as? TagViewController {
             selectedTags = tagViewController.selectedTags
             for selectItem in tagViewController.selectedTags {
                 let tagName = tagList[selectItem.row] as TagTemp
-                println(tagName.name)
+                tags.append(tagName.name)
             }
             self.tagTableView.reloadData()
-
         }
     }
 }
@@ -54,7 +54,6 @@ extension FoodViewController:UITableViewDataSource {
         if let cell:UITableViewCell = self.tagTableView.dequeueReusableCellWithIdentifier("cell") as? UITableViewCell ,
             let tagName = tagList[selectedTags.objectAtIndex(indexPath.row).row] as TagTemp! {
             cell.textLabel?.text = tagName.name
-            println("cell make")
             return cell
 
         } else {

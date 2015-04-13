@@ -48,13 +48,14 @@ class ViewController: UIViewController {
     @IBAction func touchFoodAdd(segue:UIStoryboardSegue) {
         let addFood = segue.sourceViewController as! FoodViewController
         
-        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.dataHelper.addFoods(addFood.addFoodName.text, tags: [], complete: {
-
-            self.loadFood()
-        })
+        if !addFood.addFoodName.text.isEmpty {
+            var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                appDelegate.dataHelper.addFoods(addFood.addFoodName.text, tags: addFood.tags, complete: {
+                    self.loadFood()
+                })
         
-        dismissViewControllerAnimated(false, completion: nil)
+            dismissViewControllerAnimated(false, completion: nil)
+        }
     }
     
     @IBAction func touchBackButton(segue:UIStoryboardSegue) {
