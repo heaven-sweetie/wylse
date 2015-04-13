@@ -24,6 +24,8 @@ class TagViewController: UIViewController {
     
     // 선택된 태그 모두 해제 (Pull to Refresh) 떙겨서 태그해제
     func reloadTags(sender: AnyObject) {
+        allUnselectedTags()
+        tableView.reloadData()
         refreshControl.endRefreshing()
     }
     
@@ -73,6 +75,10 @@ class TagViewController: UIViewController {
             }
         }
         return result
+    }
+    
+    func allUnselectedTags() {
+        selectedTags.removeAllObjects()
     }
 }
 
