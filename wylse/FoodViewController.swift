@@ -36,8 +36,9 @@ class FoodViewController : UIViewController {
         if let tagViewController = segue.sourceViewController as? TagViewController {
             selectedTags = tagViewController.selectedTags
             for selectItem in tagViewController.selectedTags {
-                let tagName = tagViewController.tagList[selectItem.row] as Tag
-                tags.append(tagName.name)
+                var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                let tagName = appDelegate.dataHelper.tagAtIndex(selectItem.row)
+                tags.append(tagName)
             }
             self.tagTableView.reloadData()
         }
@@ -51,9 +52,10 @@ extension FoodViewController:UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell:UITableViewCell = self.tagTableView.dequeueReusableCellWithIdentifier("cell") as? UITableViewCell ,
-            let tagName = self.tagList[selectedTags.objectAtIndex(indexPath.row).row] as TagTemp! {
-            cell.textLabel?.text = tagName.name
+        if let cell:UITableViewCell = self.tagTableView.dequeueReusableCellWithIdentifier("cell") as? UITableViewCell {
+            var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let tagName = appDelegate.dataHelper.tagAtIndex(indexPath.row)
+            cell.textLabel?.text = tagName
             return cell
 
         } else {

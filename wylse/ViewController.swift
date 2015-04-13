@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var wylseButton: UIButton!
     
     var foodList: [String]! = []
+    var selectedTags = NSMutableArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,7 @@ class ViewController: UIViewController {
     
     @IBAction func touchAddTag(sender: UIButton) {
     }
+
     @IBAction func touchWylse(sender: UIButton) {
         var randomValue:Int = random()%foodList.count
         menuPickerView.selectRow(randomValue, inComponent: 0, animated: true)
@@ -60,7 +62,16 @@ class ViewController: UIViewController {
     
     @IBAction func touchBackButton(segue:UIStoryboardSegue) {
         if let tagViewController = segue.sourceViewController as? TagViewController {
-            println("Tag!")
+            if let tagViewController = segue.sourceViewController as? TagViewController {
+                selectedTags = tagViewController.selectedTags
+                for selectItem in tagViewController.selectedTags {
+                    var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                    let tagName = appDelegate.dataHelper.tagAtIndex(selectItem.row)
+                    println(tagName)
+//                    tags.append(tagName.name)
+                }
+            }
+
         } else if let foodViewController = segue.sourceViewController as? FoodViewController {
             println("Food!")
         }

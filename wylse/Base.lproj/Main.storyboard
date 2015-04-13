@@ -125,7 +125,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="UcT-2R-LzK" kind="unwind" unwindAction="touchFoodAdd:" id="Eqt-eL-UOC"/>
+                                    <segue destination="UcT-2R-LzK" kind="unwind" identifier="touchFoodAdd" unwindAction="touchFoodAdd:" id="Eqt-eL-UOC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="음식 이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQZ-Cp-WmO">

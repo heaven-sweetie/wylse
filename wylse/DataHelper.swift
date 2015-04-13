@@ -47,6 +47,16 @@ public class DataHelper {
         complete()
     }
     
+    func tagAtIndex(atIndex:Int) -> String {
+        
+        let tagRow = NSFetchRequest(entityName:"Tag")
+        if let tagFetchResults = context.executeFetchRequest(tagRow, error: nil) as? [Tag] {
+            return tagFetchResults[atIndex].name
+        } else {
+            return ""
+        }
+    }
+    
     func fetchAllTags() -> [Tag] {
         let tagFetchRequest = NSFetchRequest()
         tagFetchRequest.entity = NSEntityDescription.entityForName("Tag", inManagedObjectContext: context)

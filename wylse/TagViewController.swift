@@ -21,6 +21,7 @@ class TagViewController: UIViewController {
         refreshControl.attributedTitle = NSAttributedString(string: "땡겨서 태그해제")
         refreshControl.addTarget(self, action: "reloadTags:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
+        loadTag()
     }
     
     // 선택된 태그 모두 해제 (Pull to Refresh) 떙겨서 태그해제
@@ -74,6 +75,13 @@ class TagViewController: UIViewController {
                             self.tagList.append(tag)
                             // 새로 넣는 태그를 선택한 아이템으로 추가.
                             var indexPath = NSIndexPath(forItem: self.tagList.count-1, inSection: 0)
+                            
+                            var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                            appDelegate.dataHelper.addTags(text, complete: {
+                                self.loadTag()
+                            })
+                            
+                            
                             self.selectedTags.addObject(indexPath)
                             self.tableView.reloadData()
                         }
