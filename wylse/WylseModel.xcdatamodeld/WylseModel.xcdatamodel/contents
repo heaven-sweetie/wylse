@@ -5,11 +5,12 @@
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="foods" inverseEntity="Tag" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName="wylse.Tag" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="foods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="tags" inverseEntity="Food" syncable="YES"/>
     </entity>
     <elements>
         <element name="Food" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="Tag" positionX="-45" positionY="18" width="128" height="75"/>
+        <element name="Tag" positionX="-45" positionY="18" width="128" height="90"/>
     </elements>
 </model>

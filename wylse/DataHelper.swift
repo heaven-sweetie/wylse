@@ -60,7 +60,7 @@ public class DataHelper {
     func fetchAllTags() -> [Tag] {
         let tagFetchRequest = NSFetchRequest()
         tagFetchRequest.entity = NSEntityDescription.entityForName("Tag", inManagedObjectContext: context)
-
+        tagFetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         let allTags = context.executeFetchRequest(tagFetchRequest, error: nil) as! [Tag]
         
         return allTags

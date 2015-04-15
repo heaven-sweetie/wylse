@@ -76,6 +76,7 @@ class TagViewController: UIViewController {
                             var newTag = Tag(entity: tagEntity!, insertIntoManagedObjectContext: appDelegate.dataHelper.context)
                             
                             newTag.name = text
+                            newTag.date = NSDate()
                             
                             self.tagList.append(newTag)
                             // 새로 넣는 태그를 선택한 아이템으로 추가.
