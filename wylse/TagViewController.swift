@@ -13,7 +13,7 @@ class TagViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var refreshControl: UIRefreshControl!
-    var selectedTags = NSMutableArray()
+    var selectedTagIndexes = NSMutableArray()
     var tagList: [Tag]! = []
     
     override func viewDidLoad() {
@@ -87,7 +87,7 @@ class TagViewController: UIViewController {
                             })
                             */
                             
-                            self.selectedTags.addObject(indexPath)
+                            self.selectedTagIndexes.addObject(indexPath)
                             self.tableView.reloadData()
                         }
                     }
@@ -110,7 +110,17 @@ class TagViewController: UIViewController {
     }
     
     func allUnselectTags() {
-        selectedTags.removeAllObjects()
+        selectedTagIndexes.removeAllObjects()
+    }
+    
+    // 선택된 태그를 String 배열로 반환
+    func getTagNames() -> [String]! {
+        var tagNames = [String]()
+        for tagIndex in selectedTagIndexes {
+            let name = tagList[tagIndex.row] as Tag!
+            tagNames.append(name.name)
+        }
+        return tagNames
     }
 }
 
@@ -127,7 +137,7 @@ extension TagViewController: UITableViewDataSource {
             let cellText = tagList[indexPath.row] as Tag! {
             cell.textLabel!.text = cellText.name
                 
-            if selectedTags.containsObject(indexPath) {
+            if selectedTagIndexes.containsObject(indexPath) {
                 cell.accessoryType = UITableViewCellAccessoryType.Checkmark
             }
             else {
@@ -137,7 +147,7 @@ extension TagViewController: UITableViewDataSource {
         } else {
             
             var cell = UITableViewCell()
-            if selectedTags.containsObject(indexPath) {
+            if selectedTagIndexes.containsObject(indexPath) {
                 cell.accessoryType = UITableViewCellAccessoryType.Checkmark
             }
             else {
@@ -154,11 +164,11 @@ extension TagViewController: UITableViewDelegate {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if selectedTags.containsObject(indexPath) {
-            selectedTags.removeObject(indexPath)
+        if selectedTagIndexes.containsObject(indexPath) {
+            selectedTagIndexes.removeObject(indexPath)
         }
         else {
-            selectedTags.addObject(indexPath)
+            selectedTagIndexes.addObject(indexPath)
         }
         
         tableView.reloadData()

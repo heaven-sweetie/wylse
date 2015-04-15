@@ -62,16 +62,11 @@ class ViewController: UIViewController {
     
     @IBAction func touchBackButton(segue:UIStoryboardSegue) {
         if let tagViewController = segue.sourceViewController as? TagViewController {
-            if let tagViewController = segue.sourceViewController as? TagViewController {
-                selectedTags = tagViewController.selectedTags
-                for selectItem in tagViewController.selectedTags {
-                    var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                    let tagName = appDelegate.dataHelper.tagAtIndex(selectItem.row)
-                    println(tagName)
-//                    tags.append(tagName.name)
-                }
+            let tagNames = tagViewController.getTagNames()
+            for name in tagNames {
+                selectedTags.addObject(name)
             }
-
+            
         } else if let foodViewController = segue.sourceViewController as? FoodViewController {
             println("Food!")
         }

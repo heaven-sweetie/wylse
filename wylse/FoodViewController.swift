@@ -16,7 +16,7 @@ class FoodViewController : UIViewController {
     @IBOutlet weak var addTag: UIButton!
     @IBOutlet weak var tagTableView: UITableView!
 
-    var selectedTags = NSMutableArray()
+    //var selectedTags = NSMutableArray()
     var foodName:String!
     var tags:[String]! = []
     
@@ -34,11 +34,12 @@ class FoodViewController : UIViewController {
 
     @IBAction func touchBackButton(segue:UIStoryboardSegue) {
         if let tagViewController = segue.sourceViewController as? TagViewController {
-            selectedTags = tagViewController.selectedTags
-            for selectItem in tagViewController.selectedTags {
-                var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                let tagName = appDelegate.dataHelper.tagAtIndex(selectItem.row)
-                tags.append(tagName)
+            let tagNames = tagViewController.getTagNames()
+            for tag in tagNames {
+                // 중복 선택한 태그가 아닌것만 추가
+                if contains(tags, tag) == false {
+                    tags.append(tag)
+                }
             }
             self.tagTableView.reloadData()
         }
@@ -48,13 +49,12 @@ class FoodViewController : UIViewController {
 //MARK: UITableViewDataSource
 extension FoodViewController:UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectedTags.count
+        return tags.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let cell:UITableViewCell = self.tagTableView.dequeueReusableCellWithIdentifier("cell") as? UITableViewCell {
-            var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let tagName = appDelegate.dataHelper.tagAtIndex(indexPath.row)
+            let tagName = tags[indexPath.row]
             cell.textLabel?.text = tagName
             return cell
 
