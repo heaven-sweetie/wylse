@@ -35,13 +35,34 @@ class FoodViewController : UIViewController {
     @IBAction func touchBackButton(segue:UIStoryboardSegue) {
         if let tagViewController = segue.sourceViewController as? TagViewController {
             selectedTags = tagViewController.selectedTags
+
             for selectItem in tagViewController.selectedTags {
                 var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 let tagName = appDelegate.dataHelper.tagAtIndex(selectItem.row)
                 tags.append(tagName)
+                println(selectItem.row)
             }
             self.tagTableView.reloadData()
         }
+    }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if identifier == "touchFoodAdd" {
+            if addFoodName.text.isEmpty  {
+                let alert = UIAlertController(title: "경고", message: "텍스트를 입력해주세요.", preferredStyle: UIAlertControllerStyle.Alert)
+                let alertAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.Cancel, handler: nil)
+                alert.addAction(alertAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+                println("false")
+                return false
+            } else {
+                println("true")
+                return true
+            }
+        } else {
+            return true
+        }
+
     }
 }
 

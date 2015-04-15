@@ -157,7 +157,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Iwv-Pt-CrF" kind="presentation" id="Q3S-FV-s4A"/>
+                                    <segue destination="Iwv-Pt-CrF" kind="presentation" identifier="selectedTag" id="Q3S-FV-s4A"/>
                                 </connections>
                             </button>
                         </subviews>
