@@ -49,7 +49,6 @@ public class DataHelper {
     }
     
     func tagAtIndex(atIndex:Int) -> String {
-        
         let tagRow = NSFetchRequest(entityName:"Tag")
         if let tagFetchResults = context.executeFetchRequest(tagRow, error: nil) as? [Tag] {
             return tagFetchResults[atIndex].name
