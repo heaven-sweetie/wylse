@@ -20,8 +20,14 @@ public class DataHelper {
     func addFoods(foodName: String, tags: [String], complete: ()->()) {
         let foodEntity = NSEntityDescription.entityForName("Food", inManagedObjectContext: context)
         var newFood = Food(entity: foodEntity!, insertIntoManagedObjectContext: context)
+
         newFood.name = foodName
-                
+        for tag in tags {
+            newFood.tags = [tag: foodName]
+            println(newFood.tags)
+        }
+        
+        
         context.save(nil)
         
         complete()
@@ -70,5 +76,28 @@ public class DataHelper {
         let allFoods = context.executeFetchRequest(foodFetchRequest, error: nil) as! [Food]
         
         return allFoods
+    }
+    /*
+    param 값과 하나라도 같은 테그가 있을시 리턴
+    
+    param   선택된 태그 Array
+    return  선택된 태그와 일치하는 값이 있는 Food Array
+    */
+    func tagSelectedFood(selectedTags: NSMutableArray) -> [Food] {
+        let foodFetchRequest = NSFetchRequest()
+        foodFetchRequest.entity = NSEntityDescription.entityForName("Food", inManagedObjectContext: context)
+        var selectedFood : [Food]! = []
+        let allFoods = context.executeFetchRequest(foodFetchRequest, error: nil) as! [Food]
+        if selectedTags.count != 0 {
+            for food in allFoods {
+                if ((selectedTags.firstObjectCommonWithArray(food.tags.allKeys)) != nil) {
+                    selectedFood.append(food)
+                }
+            }
+            return selectedFood
+        }else {
+            return allFoods
+        }
+
     }
 }

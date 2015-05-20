@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         // TODO: menuPickerView.reloadAllComponents()
         
         // 음식 리스트 로드.
+
         loadFood()
     }
 
@@ -61,11 +62,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchBackButton(segue:UIStoryboardSegue) {
+        selectedTags.removeAllObjects()
         if let tagViewController = segue.sourceViewController as? TagViewController {
             let tagNames = tagViewController.getTagNames()
             for name in tagNames {
                 selectedTags.addObject(name)
+                
             }
+            self.loadFood()
             
         } else if let foodViewController = segue.sourceViewController as? FoodViewController {
             println("Food!")
@@ -77,12 +81,12 @@ class ViewController: UIViewController {
         var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         foodList.removeAll(keepCapacity: false)
-        
-        if let foods = appDelegate.dataHelper?.fetchAllFoods() {
+        if let foods = appDelegate.dataHelper?.tagSelectedFood(selectedTags) {
             for food in foods {
                 foodList.append(food.name)
             }
         }
+
         
         menuPickerView.reloadAllComponents()
     }

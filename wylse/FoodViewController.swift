@@ -22,8 +22,11 @@ class FoodViewController : UIViewController {
     
     override func viewDidLoad() {
         self.tagTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        var foodName:String!
+        var tagName: [String]!
+//TODO: 뷰가 띄워진 위치를 확인한 값을 넣어주고
+//TODO: 선택된 태그받을 배열
     }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "touchFoodAdd" {
             foodName = addFoodName.text
