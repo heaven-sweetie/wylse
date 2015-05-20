@@ -21,16 +21,7 @@ public class DataHelper {
         let foodEntity = NSEntityDescription.entityForName("Food", inManagedObjectContext: context)
         var newFood = Food(entity: foodEntity!, insertIntoManagedObjectContext: context)
         newFood.name = foodName
-        
-        for tag in tags {
-            let tagEntity = NSEntityDescription.entityForName("Tag", inManagedObjectContext: context)
-            var newTag = Tag(entity: tagEntity!, insertIntoManagedObjectContext: context)
-            newTag.name = tag
-            
-            var tags = newFood.mutableSetValueForKey("tags")
-            tags.addObject(newTag)
-        }
-        
+                
         context.save(nil)
         
         complete()

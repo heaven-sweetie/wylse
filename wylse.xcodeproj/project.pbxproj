@@ -17,8 +17,6 @@
 		57CEAA0F1ABD61EF00CBA285 /* wylseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CEAA0E1ABD61EF00CBA285 /* wylseTests.swift */; };
 		57F16AF41AD909CA0021E6B3 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F16AF21AD909CA0021E6B3 /* Food.swift */; };
 		57F16AF51AD909CA0021E6B3 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F16AF31AD909CA0021E6B3 /* Tag.swift */; };
-		57F16AF91AD909F00021E6B3 /* Food_Temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F16AF71AD909F00021E6B3 /* Food_Temp.swift */; };
-		57F16AFA1AD909F00021E6B3 /* Tag_Temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F16AF81AD909F00021E6B3 /* Tag_Temp.swift */; };
 		57FCBA521ABD894B00881EB8 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FCBA511ABD894B00881EB8 /* FoodViewController.swift */; };
 		57FCBA541ABD8BD800881EB8 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FCBA531ABD8BD800881EB8 /* TagViewController.swift */; };
 /* End PBXBuildFile section */
@@ -48,8 +46,6 @@
 		57CEAA0E1ABD61EF00CBA285 /* wylseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wylseTests.swift; sourceTree = "<group>"; };
 		57F16AF21AD909CA0021E6B3 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		57F16AF31AD909CA0021E6B3 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
-		57F16AF71AD909F00021E6B3 /* Food_Temp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food_Temp.swift; sourceTree = "<group>"; };
-		57F16AF81AD909F00021E6B3 /* Tag_Temp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag_Temp.swift; sourceTree = "<group>"; };
 		57FCBA491ABD7F3E00881EB8 /* WylseModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WylseModel.xcdatamodel; sourceTree = "<group>"; };
 		57FCBA511ABD894B00881EB8 /* FoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		57FCBA531ABD8BD800881EB8 /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
@@ -135,7 +131,6 @@
 		57CEAA181ABD7CD000CBA285 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				57F16AF61AD909CE0021E6B3 /* Temporary */,
 				57F16AF21AD909CA0021E6B3 /* Food.swift */,
 				57F16AF31AD909CA0021E6B3 /* Tag.swift */,
 				57FCBA481ABD7F3E00881EB8 /* WylseModel.xcdatamodeld */,
@@ -159,15 +154,6 @@
 			children = (
 			);
 			name = view;
-			sourceTree = "<group>";
-		};
-		57F16AF61AD909CE0021E6B3 /* Temporary */ = {
-			isa = PBXGroup;
-			children = (
-				57F16AF71AD909F00021E6B3 /* Food_Temp.swift */,
-				57F16AF81AD909F00021E6B3 /* Tag_Temp.swift */,
-			);
-			name = Temporary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,9 +260,7 @@
 				57F16AF41AD909CA0021E6B3 /* Food.swift in Sources */,
 				15C268D21AC1C92100DE8D24 /* WylseModel.xcdatamodeld in Sources */,
 				57CEA9FB1ABD61EF00CBA285 /* ViewController.swift in Sources */,
-				57F16AF91AD909F00021E6B3 /* Food_Temp.swift in Sources */,
 				57CEA9F91ABD61EF00CBA285 /* AppDelegate.swift in Sources */,
-				57F16AFA1AD909F00021E6B3 /* Tag_Temp.swift in Sources */,
 				57FCBA521ABD894B00881EB8 /* FoodViewController.swift in Sources */,
 				15F6C9491AC137940061712A /* DataHelper.swift in Sources */,
 				57FCBA541ABD8BD800881EB8 /* TagViewController.swift in Sources */,
