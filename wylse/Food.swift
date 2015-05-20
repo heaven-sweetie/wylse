@@ -12,6 +12,6 @@ import CoreData
 class Food: NSManagedObject {
 
     @NSManaged var name: String
-    @NSManaged var tags: NSDictionary
+    @NSManaged var tags: NSMutableDictionary
 
 }

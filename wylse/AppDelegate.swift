@@ -21,8 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let context = self.managedObjectContext {
             dataHelper = DataHelper(context: context)
         }
-
-
         return true
     }
 

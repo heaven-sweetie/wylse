@@ -20,16 +20,15 @@ public class DataHelper {
     func addFoods(foodName: String, tags: [String], complete: ()->()) {
         let foodEntity = NSEntityDescription.entityForName("Food", inManagedObjectContext: context)
         var newFood = Food(entity: foodEntity!, insertIntoManagedObjectContext: context)
-
+        var newTag: NSMutableDictionary = [:]
         newFood.name = foodName
         for tag in tags {
-            newFood.tags = [tag: foodName]
-            println(newFood.tags)
+            newTag[tag] = foodName
+            println(tag)
+           
         }
-        
-        
+        newFood.tags = newTag
         context.save(nil)
-        
         complete()
     }
     
@@ -88,12 +87,15 @@ public class DataHelper {
         foodFetchRequest.entity = NSEntityDescription.entityForName("Food", inManagedObjectContext: context)
         var selectedFood : [Food]! = []
         let allFoods = context.executeFetchRequest(foodFetchRequest, error: nil) as! [Food]
+
         if selectedTags.count != 0 {
             for food in allFoods {
+                println(selectedTags.count, food.tags.allKeys)
                 if ((selectedTags.firstObjectCommonWithArray(food.tags.allKeys)) != nil) {
                     selectedFood.append(food)
                 }
             }
+            println(selectedFood)
             return selectedFood
         }else {
             return allFoods

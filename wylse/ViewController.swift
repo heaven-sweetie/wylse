@@ -56,7 +56,6 @@ class ViewController: UIViewController {
                 appDelegate.dataHelper.addFoods(addFood.addFoodName.text, tags: addFood.tags, complete: {
                     self.loadFood()
                 })
-        
             dismissViewControllerAnimated(false, completion: nil)
         }
     }
