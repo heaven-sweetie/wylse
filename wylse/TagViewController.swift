@@ -22,6 +22,13 @@ class TagViewController: UIViewController {
         refreshControl.attributedTitle = NSAttributedString(string: "땡겨서 태그해제")
         refreshControl.addTarget(self, action: "reloadTags:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
+        
+        self.tableView.layer.cornerRadius = 4
+        self.tableView.layer.backgroundColor = UIColor(red:0.98, green:0.97, blue:0.92, alpha:1).CGColor
+        self.tableView.layer.shadowColor = UIColor.blackColor().CGColor
+        self.tableView.layer.shadowOffset = CGSizeMake(0.0, 0.5)
+        self.tableView.layer.shadowRadius = 0.5
+        
         loadTag()
     }
     

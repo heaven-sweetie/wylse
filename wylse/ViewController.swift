@@ -22,6 +22,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
+//        for (NSString* family in [UIFont familyNames])
+//        {
+//            NSLog(@"%@", family);
+//            
+//            for (NSString* name in [UIFont fontNamesForFamilyName: family])
+//            {
+//                NSLog(@"  %@", name);
+//            }
+//        }
         // Do any additional setup after loading the view, typically from a nib.
         
         // TODO: Fetch Food List
@@ -30,7 +41,7 @@ class ViewController: UIViewController {
         // 음식 리스트 로드.
         loadFood()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

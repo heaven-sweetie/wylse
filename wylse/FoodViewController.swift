@@ -21,7 +21,12 @@ class FoodViewController : UIViewController {
     var tags:[String]! = []
     
     override func viewDidLoad() {
-        self.tagTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        //self.tagTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tagTableView.layer.cornerRadius = 4
+        self.tagTableView.layer.backgroundColor = UIColor(red:0.98, green:0.97, blue:0.92, alpha:1).CGColor
+        self.tagTableView.layer.shadowColor = UIColor.blackColor().CGColor
+        self.tagTableView.layer.shadowOffset = CGSizeMake(0.0, 0.5)
+        self.tagTableView.layer.shadowRadius = 0.5
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -72,9 +77,9 @@ extension FoodViewController:UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell:UITableViewCell = self.tagTableView.dequeueReusableCellWithIdentifier("cell") as? UITableViewCell {
+        if let cell:TagTableViewCell = self.tagTableView.dequeueReusableCellWithIdentifier("cell") as? TagTableViewCell {
             let tagName = tags[indexPath.row]
-            cell.textLabel?.text = tagName
+            cell.title?.text = tagName
             return cell
 
         } else {

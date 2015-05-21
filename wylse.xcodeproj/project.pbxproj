@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150449281B0CBD4900B33BCC /* BMHANNA11yrsoldOTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 150449271B0CBD4900B33BCC /* BMHANNA11yrsoldOTF.otf */; };
+		1596EE041B0CF2DE00D83078 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1596EE031B0CF2DE00D83078 /* TagTableViewCell.swift */; };
 		15C268D21AC1C92100DE8D24 /* WylseModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57FCBA481ABD7F3E00881EB8 /* WylseModel.xcdatamodeld */; };
 		15C268D31AC1CA4500DE8D24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57CEA9FC1ABD61EF00CBA285 /* Main.storyboard */; };
 		15C268D41AC1CA4500DE8D24 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CEAA011ABD61EF00CBA285 /* LaunchScreen.xib */; };
@@ -32,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		150449271B0CBD4900B33BCC /* BMHANNA11yrsoldOTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNA11yrsoldOTF.otf; sourceTree = "<group>"; };
+		1596EE031B0CF2DE00D83078 /* TagTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
 		15D8CBC61AC1B4BA00773715 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		15F6C9481AC137940061712A /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		57CEA9F31ABD61EF00CBA285 /* wylse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wylse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +101,7 @@
 				57CEAA191ABD7CE800CBA285 /* controller */,
 				57CEAA181ABD7CD000CBA285 /* model */,
 				57CEA9F81ABD61EF00CBA285 /* AppDelegate.swift */,
+				150449271B0CBD4900B33BCC /* BMHANNA11yrsoldOTF.otf */,
 				57CEA9FF1ABD61EF00CBA285 /* Images.xcassets */,
 				57CEA9F61ABD61EF00CBA285 /* Supporting Files */,
 			);
@@ -152,6 +157,7 @@
 		57CEAA1A1ABD7CEF00CBA285 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				1596EE031B0CF2DE00D83078 /* TagTableViewCell.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -238,6 +244,7 @@
 			files = (
 				15C268D31AC1CA4500DE8D24 /* Main.storyboard in Resources */,
 				15C268D41AC1CA4500DE8D24 /* LaunchScreen.xib in Resources */,
+				150449281B0CBD4900B33BCC /* BMHANNA11yrsoldOTF.otf in Resources */,
 				57CEAA001ABD61EF00CBA285 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +268,7 @@
 				15C268D21AC1C92100DE8D24 /* WylseModel.xcdatamodeld in Sources */,
 				57CEA9FB1ABD61EF00CBA285 /* ViewController.swift in Sources */,
 				57CEA9F91ABD61EF00CBA285 /* AppDelegate.swift in Sources */,
+				1596EE041B0CF2DE00D83078 /* TagTableViewCell.swift in Sources */,
 				57FCBA521ABD894B00881EB8 /* FoodViewController.swift in Sources */,
 				15F6C9491AC137940061712A /* DataHelper.swift in Sources */,
 				57FCBA541ABD8BD800881EB8 /* TagViewController.swift in Sources */,
