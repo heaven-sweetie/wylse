@@ -21,7 +21,12 @@ class FoodViewController : UIViewController {
     var tags:[String]! = []
     
     override func viewDidLoad() {
-        //self.tagTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        var foodName:String!
+        var tagName: [String]!
+//TODO: 뷰가 띄워진 위치를 확인한 값을 넣어주고
+//TODO: 선택된 태그받을 배열
+        
+        // 테이블뷰 ui수정 둥근효과적용.
         self.tagTableView.layer.cornerRadius = 4
         self.tagTableView.layer.backgroundColor = UIColor(red:0.98, green:0.97, blue:0.92, alpha:1).CGColor
         self.tagTableView.layer.shadowColor = UIColor.blackColor().CGColor
@@ -34,6 +39,7 @@ class FoodViewController : UIViewController {
             foodName = addFoodName.text
         }
     }
+    
     @IBAction func touchTagSelect(sender: UIButton) {
     }
 
