@@ -1,5 +1,5 @@
 //
-//  TagTableViewCell.swift
+//  FoodTableViewCell.swift
 //  wylse
 //
 //  Created by Hanul Park on 5/21/15.
@@ -8,7 +8,6 @@
 
 import UIKit
 
-class TagTableViewCell : UITableViewCell {
+class FoodTableViewCell : UITableViewCell {
     @IBOutlet var title : UILabel!
-    @IBOutlet var mark : UIImageView!
 }

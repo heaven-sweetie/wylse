@@ -141,25 +141,28 @@ extension TagViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier(kTagCellIdentifier) as? UITableViewCell,
+        if let cell = tableView.dequeueReusableCellWithIdentifier(kTagCellIdentifier) as? TagTableViewCell,
             let cellText = tagList[indexPath.row] as Tag! {
-            cell.textLabel!.text = cellText.name
+            cell.title!.text = cellText.name
                 
             if selectedTagIndexes.containsObject(indexPath) {
-                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                cell.mark.image = UIImage(named: "Mark")
             }
             else {
-                cell.accessoryType = UITableViewCellAccessoryType.None
+//                cell.accessoryType = UITableViewCellAccessoryType.None
+                cell.mark.image = UIImage(named: "EmptyMark")
             }
             return cell
         } else {
             
-            var cell = UITableViewCell()
+            var cell = TagTableViewCell()
             if selectedTagIndexes.containsObject(indexPath) {
-                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+//                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                cell.mark.image = UIImage(named: "Mark")
             }
             else {
-                cell.accessoryType = UITableViewCellAccessoryType.None
+//                cell.accessoryType = UITableViewCellAccessoryType.None
+                cell.mark.image = UIImage(named: "EmptyMark")
             }
             
             return cell

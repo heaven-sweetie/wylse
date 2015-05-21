@@ -76,6 +76,7 @@ class FoodViewController : UIViewController {
     }
 }
 
+let kFoodCellIdentifier = "FoodCell"
 //MARK: UITableViewDataSource
 extension FoodViewController:UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,7 +84,7 @@ extension FoodViewController:UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell:TagTableViewCell = self.tagTableView.dequeueReusableCellWithIdentifier("cell") as? TagTableViewCell {
+        if let cell:FoodTableViewCell = self.tagTableView.dequeueReusableCellWithIdentifier(kFoodCellIdentifier) as? FoodTableViewCell {
             let tagName = tags[indexPath.row]
             cell.title?.text = tagName
             return cell
