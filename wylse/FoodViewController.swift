@@ -90,7 +90,7 @@ extension FoodViewController:UITableViewDataSource {
             return cell
 
         } else {
-            return UITableViewCell()
+            return FoodTableViewCell()
         }
     }
 }
