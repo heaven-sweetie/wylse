@@ -10,6 +10,7 @@ import UIKit
 
 class FoodViewController : UIViewController {
     
+    @IBOutlet weak var navBarImageView: UIImageView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var foodAddButton: UIButton!
     @IBOutlet weak var addFoodName: UITextField!
@@ -25,6 +26,9 @@ class FoodViewController : UIViewController {
         var tagName: [String]!
 //TODO: 뷰가 띄워진 위치를 확인한 값을 넣어주고
 //TODO: 선택된 태그받을 배열
+        
+        var stretchableNavImage = UIColor(patternImage: UIImage(named: "NavBarBackground")!)
+        navBarImageView.backgroundColor = stretchableNavImage
         
         // 테이블뷰 ui수정 둥근효과적용.
         self.tagTableView.layer.cornerRadius = 4

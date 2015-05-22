@@ -11,12 +11,17 @@ import CoreData
 
 class TagViewController: UIViewController {
     
+    @IBOutlet weak var navBarImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     var refreshControl: UIRefreshControl!
     var selectedTagIndexes = NSMutableArray()
     var tagList: [Tag]! = []
     
     override func viewDidLoad() {
+        
+        var stretchableNavImage = UIColor(patternImage: UIImage(named: "NavBarBackground")!)
+        navBarImageView.backgroundColor = stretchableNavImage
+        
         // 땡겨서 새로고침 UIRefreshControl 추가
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "땡겨서 태그해제")
