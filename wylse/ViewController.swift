@@ -55,8 +55,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction func touchWylse(sender: UIButton) {
-        var randomValue:Int = random()%foodList.count
-        menuPickerView.selectRow(randomValue, inComponent: 0, animated: true)
+
+        if(foodList.count != 0) {
+            var randomValue:Int = random()%foodList.count
+            menuPickerView.selectRow(randomValue, inComponent: 0, animated: true)
+        }
     }
     
     @IBAction func touchFoodAdd(segue:UIStoryboardSegue) {
