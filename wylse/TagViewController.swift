@@ -19,7 +19,7 @@ class TagViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        var stretchableNavImage = UIColor(patternImage: UIImage(named: "NavBarBackground")!)
+        let stretchableNavImage = UIColor(patternImage: UIImage(named: "NavBarBackground")!)
         navBarImageView.backgroundColor = stretchableNavImage
         
         // 땡겨서 새로고침 UIRefreshControl 추가
@@ -45,7 +45,7 @@ class TagViewController: UIViewController {
     }
     
     func loadTag() {
-        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         tagList.removeAll(keepCapacity: false)
         
@@ -64,7 +64,7 @@ class TagViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "취소", style: UIAlertActionStyle.Cancel, handler: nil))
         alertController.addAction(UIAlertAction(title: "추가", style: UIAlertActionStyle.Default, handler: { (alertActoin) -> Void in
             
-            if let textField = alertController.textFields?.first as? UITextField,
+            if let textField = alertController.textFields!.first,
 
                 let text = textField.text {
                     if text.isEmpty {
@@ -83,16 +83,16 @@ class TagViewController: UIViewController {
                             self.presentViewController(duplicateAlert, animated: true, completion: nil)
                         }
                         else {
-                            var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                             let tagEntity = NSEntityDescription.entityForName("Tag", inManagedObjectContext: appDelegate.dataHelper.context)
-                            var newTag = Tag(entity: tagEntity!, insertIntoManagedObjectContext: appDelegate.dataHelper.context)
+                            let newTag = Tag(entity: tagEntity!, insertIntoManagedObjectContext: appDelegate.dataHelper.context)
                             
                             newTag.name = text
                             newTag.date = NSDate()
                             
                             self.tagList.append(newTag)
                             // 새로 넣는 태그를 선택한 아이템으로 추가.
-                            var indexPath = NSIndexPath(forItem: self.tagList.count-1, inSection: 0)
+                            let indexPath = NSIndexPath(forItem: self.tagList.count-1, inSection: 0)
 
                             /*
                             appDelegate.dataHelper.addTags(text, complete: {
@@ -160,7 +160,7 @@ extension TagViewController: UITableViewDataSource {
             return cell
         } else {
             
-            var cell = TagTableViewCell()
+            let cell = TagTableViewCell()
             if selectedTagIndexes.containsObject(indexPath) {
 //                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
                 cell.mark.image = UIImage(named: "Mark")

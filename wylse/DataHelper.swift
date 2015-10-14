@@ -19,34 +19,40 @@ public class DataHelper {
     // 음식을 추가한다.
     func addFoods(foodName: String, tags: [String], complete: ()->()) {
         let foodEntity = NSEntityDescription.entityForName("Food", inManagedObjectContext: context)
-        var newFood = Food(entity: foodEntity!, insertIntoManagedObjectContext: context)
-        var newTag: NSMutableDictionary = [:]
+        let newFood = Food(entity: foodEntity!, insertIntoManagedObjectContext: context)
+        let newTag: NSMutableDictionary = [:]
         newFood.name = foodName
         for tag in tags {
             newTag[tag] = foodName
-            println(tag)
+            print(tag)
            
         }
         newFood.tags = newTag
-        context.save(nil)
+        do {
+            try context.save()
+        } catch _ {
+        }
         complete()
     }
     
     // 태그를 추가한다.
     func addTags(tagName: String, complete: ()->()) {
         let tagEntity = NSEntityDescription.entityForName("Tag", inManagedObjectContext: context)
-        var newTag = Tag(entity: tagEntity!, insertIntoManagedObjectContext: context)
+        let newTag = Tag(entity: tagEntity!, insertIntoManagedObjectContext: context)
         newTag.name = tagName
         
         
-        context.save(nil)
+        do {
+            try context.save()
+        } catch _ {
+        }
         
         complete()
     }
     
     func tagAtIndex(atIndex:Int) -> String {
         let tagRow = NSFetchRequest(entityName:"Tag")
-        if let tagFetchResults = context.executeFetchRequest(tagRow, error: nil) as? [Tag] {
+        if let tagFetchResults = (try? context.executeFetchRequest(tagRow)) as? [Tag] {
             return tagFetchResults[atIndex].name
         } else {
             return ""
@@ -57,7 +63,7 @@ public class DataHelper {
         let tagFetchRequest = NSFetchRequest()
         tagFetchRequest.entity = NSEntityDescription.entityForName("Tag", inManagedObjectContext: context)
         tagFetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
-        let allTags = context.executeFetchRequest(tagFetchRequest, error: nil) as! [Tag]
+        let allTags = (try! context.executeFetchRequest(tagFetchRequest)) as! [Tag]
         
         return allTags
     }
@@ -72,7 +78,7 @@ public class DataHelper {
         let foodFetchRequest = NSFetchRequest()
         foodFetchRequest.entity = NSEntityDescription.entityForName("Food", inManagedObjectContext: context)
         
-        let allFoods = context.executeFetchRequest(foodFetchRequest, error: nil) as! [Food]
+        let allFoods = (try! context.executeFetchRequest(foodFetchRequest)) as! [Food]
         
         return allFoods
     }
@@ -86,16 +92,16 @@ public class DataHelper {
         let foodFetchRequest = NSFetchRequest()
         foodFetchRequest.entity = NSEntityDescription.entityForName("Food", inManagedObjectContext: context)
         var selectedFood : [Food]! = []
-        let allFoods = context.executeFetchRequest(foodFetchRequest, error: nil) as! [Food]
+        let allFoods = (try! context.executeFetchRequest(foodFetchRequest)) as! [Food]
 
         if selectedTags.count != 0 {
             for food in allFoods {
-                println(selectedTags.count, food.tags.allKeys)
+                print(selectedTags.count, food.tags.allKeys)
                 if ((selectedTags.firstObjectCommonWithArray(food.tags.allKeys)) != nil) {
                     selectedFood.append(food)
                 }
             }
-            println(selectedFood)
+            print(selectedFood)
             return selectedFood
         }else {
             return allFoods

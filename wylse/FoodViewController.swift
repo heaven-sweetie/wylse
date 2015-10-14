@@ -22,12 +22,12 @@ class FoodViewController : UIViewController {
     var tags:[String]! = []
     
     override func viewDidLoad() {
-        var foodName:String!
-        var tagName: [String]!
+        var _:String!
+        var _: [String]!
 //TODO: 뷰가 띄워진 위치를 확인한 값을 넣어주고
 //TODO: 선택된 태그받을 배열
         
-        var stretchableNavImage = UIColor(patternImage: UIImage(named: "NavBarBackground")!)
+        let stretchableNavImage = UIColor(patternImage: UIImage(named: "NavBarBackground")!)
         navBarImageView.backgroundColor = stretchableNavImage
         
         // 테이블뷰 ui수정 둥근효과적용.
@@ -52,7 +52,7 @@ class FoodViewController : UIViewController {
             let tagNames = tagViewController.getTagNames()
             for tag in tagNames {
                 // 중복 선택한 태그가 아닌것만 추가
-                if contains(tags, tag) == false {
+                if tags.contains(tag) == false {
                     tags.append(tag)
                 }
             }
@@ -60,17 +60,17 @@ class FoodViewController : UIViewController {
         }
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "touchFoodAdd" {
-            if addFoodName.text.isEmpty  {
+            if addFoodName.text!.isEmpty  {
                 let alert = UIAlertController(title: "경고", message: "텍스트를 입력해주세요.", preferredStyle: UIAlertControllerStyle.Alert)
                 let alertAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.Cancel, handler: nil)
                 alert.addAction(alertAction)
                 self.presentViewController(alert, animated: true, completion: nil)
-                println("false")
+                print("false")
                 return false
             } else {
-                println("true")
+                print("true")
                 return true
             }
         } else {

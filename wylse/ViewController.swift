@@ -57,7 +57,7 @@ class ViewController: UIViewController {
     @IBAction func touchWylse(sender: UIButton) {
 
         if(foodList.count != 0) {
-            var randomValue:Int = random()%foodList.count
+            let randomValue:Int = random()%foodList.count
             menuPickerView.selectRow(randomValue, inComponent: 0, animated: true)
         }
     }
@@ -65,9 +65,9 @@ class ViewController: UIViewController {
     @IBAction func touchFoodAdd(segue:UIStoryboardSegue) {
         let addFood = segue.sourceViewController as! FoodViewController
         
-        if !addFood.addFoodName.text.isEmpty {
-            var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                appDelegate.dataHelper.addFoods(addFood.addFoodName.text, tags: addFood.tags, complete: {
+        if !addFood.addFoodName.text!.isEmpty {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                appDelegate.dataHelper.addFoods(addFood.addFoodName.text!, tags: addFood.tags, complete: {
                     self.loadFood()
                 })
             dismissViewControllerAnimated(false, completion: nil)
@@ -84,14 +84,14 @@ class ViewController: UIViewController {
             }
             self.loadFood()
             
-        } else if let foodViewController = segue.sourceViewController as? FoodViewController {
-            println("Food!")
+        } else if let _ = segue.sourceViewController as? FoodViewController {
+            print("Food!")
         }
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     func loadFood() {
-        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         foodList.removeAll(keepCapacity: false)
         if let foods = appDelegate.dataHelper?.tagSelectedFood(selectedTags) {
@@ -117,7 +117,7 @@ extension ViewController: UIPickerViewDataSource {
 }
 
 extension ViewController: UIPickerViewDelegate {
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if let foodName = foodList[row] as String! {
             return foodName
         }else {
